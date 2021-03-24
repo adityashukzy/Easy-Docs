@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from summarization.summarize import summarize_url
+from easydocs.summarization.summarize import summarize_url
 
 app = Flask(__name__)
 
