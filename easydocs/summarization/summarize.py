@@ -1,3 +1,7 @@
+import nltk
+nltk.download('punkt')
+
+
 from sumy.parsers.html import HtmlParser
 from sumy.nlp.tokenizers import Tokenizer
 from sumy.parsers.plaintext import PlaintextParser
