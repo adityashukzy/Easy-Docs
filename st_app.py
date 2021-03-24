@@ -10,9 +10,7 @@ from easydocs.summarization.summarize import summarize_url, summarize_doc
 
 ##########################################################################################
 
-'''
-Summarization Functions
-'''
+## Summarization Functions
 def generate_url_summary(url, sentences_count):
 	'''
 	Generate summary from a provided url and a count of how many sentences should be in the summary.
