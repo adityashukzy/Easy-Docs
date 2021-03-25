@@ -37,16 +37,6 @@ def ezpz():
 
 # MAIN Function
 def main():
-	html = """
-		<style>
-		.sidebar .sidebar-content {
-			background-image: linear-gradient(#6600cc 0%, #ff99cc 100%);
-			color: white;
-		}
-		</style>
-		"""
-	st.markdown(html, unsafe_allow_html=True)
-
 	menu = ['Welcome', 'Summarize a URL', 'Summarize a text document', 'Optical Character Recognition', 'Convert text/pdf-to-audiobook', 'Talk to the EzPz bot']
 	with st.sidebar.beta_expander("Menu", expanded=False):
 		option = st.selectbox('Choose your task', menu)
