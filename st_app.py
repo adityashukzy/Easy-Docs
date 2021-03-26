@@ -5,7 +5,7 @@ import PyPDF2
 
 from easydocs.summarization import summarize_url, summarize_doc
 from easydocs.ocr import transcribe_image
-from easydocs.audiobook import convert_to_audio
+from easydocs.audiobook import convert_text_to_audio, convert_pdf_to_audio
 
 ## Summarization Functions
 def generate_url_summary(url, sentences_count):
@@ -39,14 +39,22 @@ def text_to_audio(text_input, save, slow):
 	elif slow == "No":
 		slow = False
 
-	convert_to_audio(text_input, save, slow)
+	convert_text_to_audio(text_input, save, slow)
+
+def pdf_to_audio(pdf, slow):
+	if slow == "Yes":
+		slow = True
+	elif slow == "No":
+		slow = False
+
+	convert_pdf_to_audio(pdf, slow)
 
 def ezpz():
 	pass
 
 # MAIN Function
 def main():
-	menu = ['Welcome', 'Summarize a URL', 'Summarize a text document', 'Optical Character Recognition', 'Convert text/pdf-to-audiobook', 'Talk to the EzPz bot']
+	menu = ['Welcome', 'Summarize a URL', 'Summarize a text document', 'Optical Character Recognition', 'Text-to-audiobook', 'PDF-to-audiobook', 'Talk to the EzPz bot']
 	with st.sidebar.beta_expander("Menu", expanded=False):
 		option = st.selectbox('Choose your task', menu)
 		st.subheader("Made with ❤️ by Team Agnes")
@@ -104,7 +112,7 @@ def main():
 			bytes_image = img_file_buffer.getvalue()
 			ocr(bytes_image)
 
-	elif option == 'Convert text-to-audiobook':
+	elif option == 'Text-to-audiobook':
 		st.title('Hello there!')
 		st.subheader('A simple text-to-speech converter.')
 		text_input = st.text_area('Enter text: ')
@@ -112,6 +120,12 @@ def main():
 		save = st.radio('Do you want to save the output file?', ("Yes", "No"))
 		slow = st.radio("Do you want it read slowly?", ("Yes", "No"))
 		text_to_audio(text_input, save, slow)
+
+	elif option == "PDF-to-audiobook":
+		pdf_file = st.file_uploader("Upload PDF: ", type=['pdf'])
+		slow = st.radio("Do you want it read slowly?", ("Yes", "No"))
+
+		pdf_to_audio(pdf_file, slow)
 
 	elif option == 'Talk to EzPz':
 		ezpz()
