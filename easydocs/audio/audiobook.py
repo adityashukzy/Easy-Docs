@@ -4,10 +4,14 @@ import pdfplumber
 
 def convert_text_to_audio(text_input, save, slow):
 	if save == "Yes":
-		audio = gTTS(text=text_input, lang='en', slow=slow)
+		if slow == "Yes":
+			audio = gTTS(text=text_input, lang='en', slow=True)
+		elif slow == "No":
+			audio = gTTS(text=text_input, lang='en', slow=False)
+		
 		audio.save('your_audiobook.mp3')
 
-	else:
+	elif save == "No":
 		speaker = pyttsx3.init()
 		speaker.say(text_input)
 		speaker.runAndWait()
@@ -19,15 +23,17 @@ def convert_pdf_to_audio(pdf_file, save, slow):
 		with pdfplumber.open(pdf_file) as pdf:
 			page = pdf.pages[0]
 			pdf_text += page.extract_text()
+
+		print(pdf_text)
 		
 		if slow == "Yes":
 			audio = gTTS(text=pdf_text, lang='en', slow=True)
-		else:
+		elif slow == "No":
 			audio = gTTS(text=pdf_text, lang='en', slow=False)
 		
 		if save == "Yes":
 			audio.save('your_audiobook.mp3')
-		else:
+		elif save == "No":
 			speaker = pyttsx3.init()
 			speaker.say(pdf_text)
 			speaker.runAndWait()
