@@ -34,7 +34,7 @@ def generate_doc_summary(text, sentences_count):
 
 
 def ocr():
-	
+	pass
 
 def text_to_audio():
 	st.title('PDF-to-audiobook')
