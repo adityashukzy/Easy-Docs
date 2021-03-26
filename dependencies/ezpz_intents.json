@@ -39,19 +39,13 @@
 	   {
 			"tag": "audiobook",
          	"patterns": ["what is audibook", "how do you convert text document to audiobook", "what is use of audiobook", "what is the method of conversion of text to audio", "can you convert pdf to audiobook?", "how long text document to audiobook"],
-         	"responses": ["Audiobooks are ", "Microsleep is a mild form of falling asleep wherein a sleep-deprived or fatigued person doze off for a few seconds at a time, without realizing that their eyes are closing. It is a huge source of fatigue-related crashes and has caused several crashes, including several plane crashes."],
+         	"responses": ["Audiobooks are a convenient method of reading through books, documents, etc. for a lot of people. Research has found that hearing information can sometimes be much more effective than reading it, and this is especially so for young people with attention disorders. We can take a short document or text input by you and read it out to you!", "Humans are much more attentive to an influx of new information when it is auditory rather than visual, and this is especially so the case for young people with ADHD or Dyslexia. Using our audiobook tool, we can convert (& even read out) any text or short document as an audiobook! :)"],
 			 "context_set": ""
 		},
 		{
-			"tag": "solution",
-			"patterns": ["how to solve this", "how to reduce crash", "how to reduce crashes", "how does steersecure work", "how is it working", "how does it work", "what are you using"],
-			"responses": ["SteerSecure is committed to upholding driver safety. Both of our apps use the OpenCV computer vision library. The distraction detector is trained using the Tensorflow and Keras APIs on several images of distracted drivers and takes in a live video feed to detect any distracted activity. The live video is displayed to the driver along with a label of their activity, encouraging them to stay vigilant since their behavior is being tracked. Our drowsiness detector carefully evaluates the facial landmarks of the eyes as well as mouth and lips to detect any fatigue such as eyes shutting, microsleep or yawning. If it detects such activity, an alarm is sounded, encouraging the driver to pull over and get rested."],
-			"context_set": ""
-		},
-		{
 			"tag": "usage",
-			"patterns": ["how do i use steersecure", "how to use", "how to use this app", "i want to use steersecure", "how can i use this product"],
-			"responses": ["SteerSecure can be used by navigating to the sidebar on the left on our website and clicking on whichever application you want to try out.", "Head on over to our website and navigate to your application of choice!"],
+			"patterns": ["how do i use easydocs", "how to use", "how to use this app", "i want to use easydocs", "how can i use this product", "can i use on mobile?"],
+			"responses": ["Just navigate to the sidebar on the left and click on whichever application you would like to use.", "Head on over to the sidebar on your left and navigate to your tool of choice!"],
 			"context_set": ""
 		},
 		{

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "vital-form-308207",
+  "private_key_id": "4adcd96da810455eba2001fe37e9662d08d2e41e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCxaqMiPoMJ0NYi\n2mR/HMG715f28q5ucnvrlAt3iexCXLBuDsNfL72S08z2Epy3t+OocIpmCluOM0zy\nKgrDpZHMNYYBOYknn8uI8Glss7jUAudAQZT0UA+bcgzlffbs/HJY2KX82j7cNg3e\n0e6WgatdTKe5TpPiz65py46sgar6q/EIFlwdvuNt/BgI8tIuCJzizcPS/KD0spn4\nKoibqs0cexP8G0XmpaitMB6qGrcvIe7QqDTu6SAkOU9+zgSG4BauroZdNIqIWSZT\nhxC+SDTQWnFnJM7nzL5kmrmyBO8CeKq6YM3pWiqOHJ6RjI/9nDSZRhgQKYYb8yrg\n8fAkWa67AgMBAAECggEADf2Kv7iOPMfrGvR92Eg8PsPRh/e7KZp9iyYxgUuvBcyp\nXQRtA6SQHnP1RbJSCWrG2RGG2GUYsy34c2A9WRBFXwUZfB89YZKISlQq/BdwC8fu\n1HJXfKyTjn5/5dj5D9cYbUkoTbgoHNVmYpvLZLL1AHZ7A3He15Po/Q7AQXo4MWwb\nxZ2ABMPG6yCi98Gd1XX+xy15Ds+XlRlpiS/K1EdOYy89rrusFNhNj+5Y7bJG8bGX\nYpMO3gmSweEeMQ2C4mEDMcuvV+0eiCf9a47sv5X03CTMffv17yrjnoSk5ynt/tEl\n8B11h5sQJKPvoTjK8dVwcftgrcEzDKaefXtLp8pegQKBgQDxikjLsXkEQqRRu+If\nuqWLVNXjqbF1YvachT7vfC34RjHJnXdO3rPL6rZGO7APbb7lxyTdv9wDL7PGNXSV\naHh+hoZq3/7HsdVHyFyhFYG1v5bVPqrT54woKMp3nY1sgZSHe4pPAyom8BvGm9QC\nNHYB3FlObC3k0TQ8WEglIzFEhQKBgQC8CaDms2qLNhCJpmYEhwL1KX9ktFt/WWmh\nYdBzq6qrGpCULdSRjnblEe9/3AdarfE/hKL40FE8FzPl6N5kBzokTXaD7e4cIxJB\ncGZCjnyRMMfwCFrgS4FwhFIR8NvpGrEtfH1ywn4YPRuUVf9ITkgqcdZ2wszUH3fX\nWJ/UXMwqPwKBgE90A5otmPdTzKWuPiXdydLZZzpqeZt5oFHAawFwQdbnkD0X9UUW\ncOJlJOxZegK5QRBov7HKCN9rc6GBuAXlxa0pJ1JEuJSL5PKl8AJ1BqP4j+85nAv0\noOAc+uz6AKluvqMKemafTeBdH2XnoIfRJfhauW3YnAgm4R3wlFrTBsPZAoGAQkoi\nrzIRHYKx0dUXogD2yfcXMiljGEItOveAxUZ/pFJ5JcQCbE4NHDR2elzXOuCXbA0W\nZyEJgmWrpiGyRRFHLgUhAuGeT80NYoR9iHky8PyBf91yLCByQXhkdm6zGDqQu7hn\ngU2PpnvkfSbUGGmAh3YaZUPHcgCl/wT/U55jW4ECgYEAnq2FB+Keiy8WZC6iaNnw\nny77f230KSBQA/LzzhvV9mP7QxmNEYSpQiori3TZO2YFQ9CUmaa3uFUTNM71WSBP\nkk+6cr181I7OB3+02VE9NCjvU2GQZsvb70roEGMM7Qsj6rqxM03OlSmTNnFMp/4l\nJc5lPd/K/FNjMAxZ+MOCj/Q=\n-----END PRIVATE KEY-----\n",
+  "client_email": "easydocs@vital-form-308207.iam.gserviceaccount.com",
+  "client_id": "111237056515830419055",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/easydocs%40vital-form-308207.iam.gserviceaccount.com"
+}

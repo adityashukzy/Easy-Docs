@@ -1,21 +1,11 @@
 import streamlit as st
 from gtts import gTTS
 import pyttsx3
-# import PyPDF2
+import PyPDF2
 
-# Summarization Import
-from easydocs.summarization.summarize import summarize_url, summarize_doc
-
-# OCR Import
-import PIL
-from PIL import Image
-from google.cloud import vision_v1
-from google.cloud import vision
-from google.cloud.vision_v1 import types
-
-# Text to Audiobook Import
-
-##########################################################################################
+from easydocs.summarization import summarize_url, summarize_doc
+from easydocs.ocr import transcribe_image
+from easydocs.audiobook import convert_to_audio
 
 ## Summarization Functions
 def generate_url_summary(url, sentences_count):
@@ -32,61 +22,24 @@ def generate_doc_summary(text, sentences_count):
 	summary = summarize_doc(text, sentences_count)
 	return summary
 
+## Optical Character Recognition
+def ocr(bytes_image):
+	transcript = transcribe_image(bytes_image)
+	st.subheader(transcript)
 
-def ocr(img_file_buffer):
-	client = vision.ImageAnnotatorClient()
-
-	content = img_file_buffer.read()
-	image = vision_v1.types.Image(content=content)
-
-	response = client.text_detection(image=image)
-	text = response.text_annotations
+## Text to Audiobook
+def text_to_audio(text_input, save, slow):
+	if save == "Yes":
+		save = True
+	elif save == "No":
+		save = False
 	
-	textList = []
-	for i in text:
-		textList.append(i.description)
-	
-	st.subheader(" ".join(textList))
+	if slow == "Yes":
+		slow = True
+	elif slow == "No":
+		slow = False
 
-def text_to_audio():
-	pass
-	# st.title('PDF-to-audiobook')
-	# st.subheader('Welcome to the 3rd section of EasyDocs: PDF to audiobook converter')
-	# st.write('Answer a sequence of questions and upload a file in the specified format so as to obtain an audiobook.')
-	# st.write('ProTip: To convert an image to a text file, use the OCR functionality provided by EasyDocs :)')
-
-	# txt=st.text_area('Paste any text and let EasyDocs do the job for you!')
-	# #choice=st.radio('Choose the upload format of your document',('Text file','PDF document'))
-	# in1=st.radio('Do you want to save the output file?',('Yes','No'))
-	# #if choice=='PDF document':
-	# 	#fla=st.file_uploader('Upload a document',type=['pdf'])
-	# 	#pdf=PyPDF2.PdfFileReader(fla)
-
-	# if in1=='Yes':
-	# 	inp=st.radio('Do you want the document to be read in a slower pace?',('Yes','No'))
-	# 	if inp=='Yes':
-	# 		res1=gTTS(text=txt,lang='en',slow=True)
-	# 	elif inp=='No':
-	# 		res1=gTTS(text=txt,lang='en',slow=False)
-
-	# 	res1.save('your_audiobook.mp3')
-	# #elif choice=='Text file':
-	# 	#fla=st.file_uploader('Upload a document',type=['txt'])
-	# 	#inp2=('Do you want to save the output file? Y/N')
-	# 	#if inp1=='Y' or inp1=='y':
-	# 		#res2=gTTS(text=pdf,lang='en',slow=False)
-	# 		#res2.save('your_audiobook.mp3')
-
-	# elif inp1=='No':
-	# 		#numpgs=pdf.numPages
-	# 		#for i in range(numpgs):
-	# 			#page=pdf.getPage(i)
-	# 			#content += page.extractText()
-	# 	speaker=pyttsx3.init()
-	# 	speaker.say(txt)
-	# 	speaker.runAndWait()
-
-	#pass
+	convert_to_audio(text_input, save, slow)
 
 def ezpz():
 	pass
@@ -99,12 +52,13 @@ def main():
 		st.subheader("Made with ❤️ by Team Agnes")
 
 	if option == 'Welcome':
-		# link = ''
+		img_path = "dependencies/logo.png"
 
+		st.image(img_path, use_column_width=True)
 		st.title("EasyDocs 📄✍🏼📓 ~ A student friendly ML application")
-		st.header('Summarize|Recognize|Revolutionize')
-		st.image('data/logo1.jpg', use_column_width=True)
+
 		st.subheader("EasyDocs is a web-app with the sole purpose of making your life as a student easier!")
+		
 		st.write("*Summarize* long text documents or paragraphs with the click of a button!")
 		st.write("Identify, *recognize* and store text obtained from handwritten images or documents!")
 		st.write("Explore the extremely convenient method of learning: via *audiobooks*!")
@@ -143,15 +97,21 @@ def main():
 						st.markdown(summary)
 
 	elif option ==  'Optical Character Recognition':
+		st.title("Transcribe text from an image")
 		img_file_buffer = st.file_uploader("Upload an image:")
 
 		if img_file_buffer is not None:
-			image = Image.open(img_file_buffer)
-
-			ocr(img_file_buffer)
+			bytes_image = img_file_buffer.getvalue()
+			ocr(bytes_image)
 
 	elif option == 'Convert text-to-audiobook':
-		text_to_audio()
+		st.title('Hello there!')
+		st.subheader('A simple text-to-speech converter.')
+		text_input = st.text_area('Enter text: ')
+		
+		save = st.radio('Do you want to save the output file?', ("Yes", "No"))
+		slow = st.radio("Do you want it read slowly?", ("Yes", "No"))
+		text_to_audio(text_input, save, slow)
 
 	elif option == 'Talk to EzPz':
 		ezpz()
