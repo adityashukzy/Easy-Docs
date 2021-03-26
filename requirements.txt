@@ -11,3 +11,4 @@ Pillow==8.1.2
 protobuf==3.15.6
 PyPDF2==1.26.0
 pyttsx3==2.90
+google-cloud-vision==2.2.0
