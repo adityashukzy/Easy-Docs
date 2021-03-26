@@ -1,4 +1,7 @@
 import streamlit as st
+from gtts import gTTS
+import pysttx3
+import PyPDF2
 
 # Summarization Import
 from easydocs.summarization.summarize import summarize_url, summarize_doc
@@ -30,7 +33,43 @@ def ocr():
 	pass
 
 def text_to_audio():
-	pass
+	st.title('PDF-to-audiobook')
+	st.subheader('Welcome to the 3rd section of EasyDocs: PDF to audiobook converter')
+	st.write('Answer a sequence of questions and upload a file in the specified format so as to obtain an audiobook.')
+	st.write('ProTip: To convert an image to a text file, use the OCR functionality provided by EasyDocs :)')
+
+	txt=st.text_area('Paste any text and let EasyDocs do the job for you!')
+	#choice=st.radio('Choose the upload format of your document',('Text file','PDF document'))
+	in1=st.radio('Do you want to save the output file?',('Yes','No'))
+	#if choice=='PDF document':
+		#fla=st.file_uploader('Upload a document',type=['pdf'])
+		#pdf=PyPDF2.PdfFileReader(fla)
+
+	if in1=='Yes':
+		inp=st.radio('Do you want the document to be read in a slower pace?',('Yes','No'))
+		if inp=='Yes':
+			res1=gTTS(text=txt,lang='en',slow=True)
+		elif inp=='No':
+		    res1=gTTS(text=txt,lang='en',slow=False)
+
+		res1.save('your_audiobook.mp3')
+	#elif choice=='Text file':
+		#fla=st.file_uploader('Upload a document',type=['txt'])
+		#inp2=('Do you want to save the output file? Y/N')
+		#if inp1=='Y' or inp1=='y':
+			#res2=gTTS(text=pdf,lang='en',slow=False)
+			#res2.save('your_audiobook.mp3')
+
+	elif inp1=='No':
+			#numpgs=pdf.numPages
+			#for i in range(numpgs):
+		        #page=pdf.getPage(i)
+		        #content += page.extractText()
+	    speaker=pyttsx3.init()
+	    speaker.say(txt)
+	    speaker.runAndWait()
+
+	#pass
 
 def ezpz():
 	pass
