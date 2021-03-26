@@ -1,7 +1,4 @@
 import streamlit as st
-from gtts import gTTS
-import pyttsx3
-import PyPDF2
 
 from easydocs.summarization import summarize_url, summarize_doc
 from easydocs.ocr import transcribe_image
@@ -49,6 +46,7 @@ def pdf_to_audio(pdf, slow):
 
 	convert_pdf_to_audio(pdf, slow)
 
+## EzPz Chatbot
 def ezpz():
 	pass
 
