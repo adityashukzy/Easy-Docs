@@ -5,6 +5,7 @@ from easydocs.ocr.ocr import transcribe_image
 from easydocs.audio.audiobook import convert_text_to_audio, convert_pdf_to_audio
 
 ## Summarization Functions
+@st.cache()
 def generate_url_summary(url, sentences_count):
 	'''
 	Generate summary from a provided url and a count of how many sentences should be in the summary.
@@ -12,6 +13,7 @@ def generate_url_summary(url, sentences_count):
 	summary = summarize_url(url, sentences_count)
 	return summary
 
+@st.cache()
 def generate_doc_summary(text, sentences_count):
 	'''
 	Generate summary from a provided url and a count of how many sentences should be in the summary.
@@ -20,31 +22,18 @@ def generate_doc_summary(text, sentences_count):
 	return summary
 
 ## Optical Character Recognition
+@st.cache()
 def ocr(bytes_image):
 	transcript = transcribe_image(bytes_image)
-	st.subheader(transcript)
+	st.text(transcript)
 
 ## Text to Audiobook
+@st.cache()
 def text_to_audio(text_input, save, slow):
-	if save == "Yes":
-		save = True
-	elif save == "No":
-		save = False
-	
-	if slow == "Yes":
-		slow = True
-	elif slow == "No":
-		slow = False
-
 	convert_text_to_audio(text_input, save, slow)
 
-def pdf_to_audio(pdf, slow):
-	if slow == "Yes":
-		slow = True
-	elif slow == "No":
-		slow = False
-
-	convert_pdf_to_audio(pdf, slow)
+def pdf_to_audio(pdf, save, slow):
+	convert_pdf_to_audio(pdf, save, slow)
 
 ## EzPz Chatbot
 def ezpz():
@@ -58,9 +47,9 @@ def main():
 		st.subheader("Made with ❤️ by Team Agnes")
 
 	if option == 'Welcome':
-		img_path = "dependencies/logo.png"
+		img_path = "dependencies/logo_transparent.png"
 
-		st.image(img_path, use_column_width=True)
+		st.image(img_path, width = 500)
 		st.title("EasyDocs 📄✍🏼📓 ~ A student friendly ML application")
 
 		st.subheader("EasyDocs is a web-app with the sole purpose of making your life as a student easier!")
@@ -117,13 +106,15 @@ def main():
 		
 		save = st.radio('Do you want to save the output file?', ("Yes", "No"))
 		slow = st.radio("Do you want it read slowly?", ("Yes", "No"))
+
 		text_to_audio(text_input, save, slow)
 
 	elif option == "PDF-to-audiobook":
 		pdf_file = st.file_uploader("Upload PDF: ", type=['pdf'])
+		save = st.radio('Do you want to save the output file?', ("Yes", "No"))
 		slow = st.radio("Do you want it read slowly?", ("Yes", "No"))
 
-		pdf_to_audio(pdf_file, slow)
+		pdf_to_audio(pdf_file, save, slow)
 
 	elif option == 'Talk to EzPz':
 		ezpz()

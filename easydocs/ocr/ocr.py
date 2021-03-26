@@ -18,7 +18,7 @@ def transcribe_image(bytes_image):
 	for i in text:
 		textList.append(i.description)
 	
-	transcript = " ".join(textList)
+	transcript = "\n".join(textList)
 
 	return transcript
 
