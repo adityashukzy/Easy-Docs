@@ -1,7 +1,7 @@
 import streamlit as st
 from gtts import gTTS
 import pyttsx3
-#import PyPDF2
+# import PyPDF2
 
 # Summarization Import
 from easydocs.summarization.summarize import summarize_url, summarize_doc
@@ -33,47 +33,58 @@ def generate_doc_summary(text, sentences_count):
 	return summary
 
 
-def ocr():
-	pass
+def ocr(img_file_buffer):
+	client = vision.ImageAnnotatorClient()
+
+	content = img_file_buffer.read()
+	image = vision_v1.types.Image(content=content)
+
+	response = client.text_detection(image=image)
+	text = response.text_annotations
+	
+	textList = []
+	for i in text:
+		textList.append(i.description)
+	
+	st.subheader(" ".join(textList))
 
 def text_to_audio():
-	st.title('PDF-to-audiobook')
-	st.subheader('Welcome to the 3rd section of EasyDocs: PDF to audiobook converter')
-	st.write('Answer a sequence of questions and upload a file in the specified format so as to obtain an audiobook.')
-	st.write('ProTip: To convert an image to a text file, use the OCR functionality provided by EasyDocs :)')
+	pass
+	# st.title('PDF-to-audiobook')
+	# st.subheader('Welcome to the 3rd section of EasyDocs: PDF to audiobook converter')
+	# st.write('Answer a sequence of questions and upload a file in the specified format so as to obtain an audiobook.')
+	# st.write('ProTip: To convert an image to a text file, use the OCR functionality provided by EasyDocs :)')
 
-	txt=st.text_area('Paste any text and let EasyDocs do the job for you!')
-	#choice=st.radio('Choose the upload format of your document',('Text file','PDF document'))
-	in1=st.radio('Do you want to save the output file?',('Yes','No'))
-	#if choice=='PDF document':
-		#fla=st.file_uploader('Upload a document',type=['pdf'])
-		#pdf=PyPDF2.PdfFileReader(fla)
+	# txt=st.text_area('Paste any text and let EasyDocs do the job for you!')
+	# #choice=st.radio('Choose the upload format of your document',('Text file','PDF document'))
+	# in1=st.radio('Do you want to save the output file?',('Yes','No'))
+	# #if choice=='PDF document':
+	# 	#fla=st.file_uploader('Upload a document',type=['pdf'])
+	# 	#pdf=PyPDF2.PdfFileReader(fla)
 
-	if in1=='Yes':
-		inp=st.radio('Do you want the document to be read in a slower pace?',('Yes','No'))
-		if inp=='Yes':
-			res1=gTTS(text=txt,lang='en',slow=True)
-		elif inp=='No':
-		    res1=gTTS(text=txt,lang='en',slow=False)
+	# if in1=='Yes':
+	# 	inp=st.radio('Do you want the document to be read in a slower pace?',('Yes','No'))
+	# 	if inp=='Yes':
+	# 		res1=gTTS(text=txt,lang='en',slow=True)
+	# 	elif inp=='No':
+	# 		res1=gTTS(text=txt,lang='en',slow=False)
 
-		res1.save('your_audiobook.mp3')
-	#elif choice=='Text file':
-		#fla=st.file_uploader('Upload a document',type=['txt'])
-		#inp2=('Do you want to save the output file? Y/N')
-		#if inp1=='Y' or inp1=='y':
-			#res2=gTTS(text=pdf,lang='en',slow=False)
-			#res2.save('your_audiobook.mp3')
+	# 	res1.save('your_audiobook.mp3')
+	# #elif choice=='Text file':
+	# 	#fla=st.file_uploader('Upload a document',type=['txt'])
+	# 	#inp2=('Do you want to save the output file? Y/N')
+	# 	#if inp1=='Y' or inp1=='y':
+	# 		#res2=gTTS(text=pdf,lang='en',slow=False)
+	# 		#res2.save('your_audiobook.mp3')
 
-	elif inp1=='No':
-			#numpgs=pdf.numPages
-			#for i in range(numpgs):
-		        #page=pdf.getPage(i)
-		        #content += page.extractText()
-	    speaker=pyttsx3.init()
-	    speaker.say(txt)
-	    speaker.runAndWait()
-
-	#pass
+	# elif inp1=='No':
+	# 		#numpgs=pdf.numPages
+	# 		#for i in range(numpgs):
+	# 			#page=pdf.getPage(i)
+	# 			#content += page.extractText()
+	# 	speaker=pyttsx3.init()
+	# 	speaker.say(txt)
+	# 	speaker.runAndWait()
 
 def ezpz():
 	pass
@@ -130,12 +141,16 @@ def main():
 						st.markdown(summary)
 
 	elif option ==  'Optical Character Recognition':
-		image = st.file_uploader("Upload an image:")
+		img_file_buffer = st.file_uploader("Upload an image:")
 
-		
-		ocr()
+		if img_file_buffer is not None:
+			image = Image.open(img_file_buffer)
+
+			ocr(img_file_buffer)
+
 	elif option == 'Convert text-to-audiobook':
 		text_to_audio()
+
 	elif option == 'Talk to EzPz':
 		ezpz()
 
