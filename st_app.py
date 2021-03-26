@@ -1,7 +1,7 @@
 import streamlit as st
 from gtts import gTTS
-import pysttx3
-import PyPDF2
+import pyttsx3
+#import PyPDF2
 
 # Summarization Import
 from easydocs.summarization.summarize import summarize_url, summarize_doc
