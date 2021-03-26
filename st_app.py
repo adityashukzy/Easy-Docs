@@ -86,6 +86,8 @@ def text_to_audio():
 	# 	speaker.say(txt)
 	# 	speaker.runAndWait()
 
+	#pass
+
 def ezpz():
 	pass
 
