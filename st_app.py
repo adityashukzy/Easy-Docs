@@ -5,7 +5,6 @@ from easydocs.ocr.ocr import transcribe_image
 from easydocs.audio.audiobook import convert_text_to_audio, convert_pdf_to_audio
 
 ## Summarization Functions
-@st.cache()
 def generate_url_summary(url, sentences_count):
 	'''
 	Generate summary from a provided url and a count of how many sentences should be in the summary.
@@ -13,7 +12,6 @@ def generate_url_summary(url, sentences_count):
 	summary = summarize_url(url, sentences_count)
 	return summary
 
-@st.cache()
 def generate_doc_summary(text, sentences_count):
 	'''
 	Generate summary from a provided url and a count of how many sentences should be in the summary.
@@ -22,13 +20,11 @@ def generate_doc_summary(text, sentences_count):
 	return summary
 
 ## Optical Character Recognition
-@st.cache()
 def ocr(bytes_image):
 	transcript = transcribe_image(bytes_image)
 	st.text(transcript)
 
 ## Text to Audiobook
-@st.cache()
 def text_to_audio(text_input, save, slow):
 	convert_text_to_audio(text_input, save, slow)
 
