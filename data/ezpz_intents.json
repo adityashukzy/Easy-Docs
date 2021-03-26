@@ -1,0 +1,64 @@
+{
+	"intents": [
+        {
+			"tag": "greeting",
+         	"patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Hiya", "Whats up"],
+         	"responses": ["Hello! How can I help? 😙", "Hi. What can I help you with? 😎", "Hey there, how can I help? 😃", "Heya! 😇 What can I help you with today?"],
+         	"context_set": ""
+        },
+        {
+			"tag": "bye",
+         	"patterns": ["Bye", "Thats all", "You can go now", "Goodbye", "I am Leaving", "I'll take leave", "I will talk later", "ok bye"],
+         	"responses": ["I'll be here if you need me!", "Bye then! Feel free to ask more questions!", "Goodbye then!", "I'll be right here in case you need me. See ya!"],
+         	"context_set": ""
+        },
+        {
+			"tag": "thanks",
+         	"patterns": ["thank you", "wow", "Good job", "Thanks a lot", "very helpful","extremely informative", "you are great", "nice", "good", "well done"],
+         	"responses": ["It's my pleasure 😇", "I am pretty cool, yeah 😋", "No problemo!", "You're very welcome 😇", "My pleasure! 💃"],
+         	"context_set": ""
+        },
+        {
+			"tag": "name",
+         	"patterns": ["what is your name", "what should I call you", "whats your name?", "who are you?", "what can you do", "what can i ask you"],
+         	"responses": ["I'm EzPz, and I'm here to try to help you get acquainted with EasyDocs.", "I'm EzPz and I am here to answer your questions about EasyDocs. You can also ask me about summarization methods, how we convert your text to an audiobook or how we recognize and transcribe text from your documents.", "I'm EzPz, the chatbot! Go ahead and ask me something about EasyDocs, text summarization, audiobooks or OCR!"],
+         	"context_set": ""
+        },
+        {
+			"tag": "easydocs",
+         	"patterns": ["what is easydocs", "what can easydocs do", "what is this product", "could i get some details?","what is the product", "what does this project do", "what is the use of this"],
+         	"responses": ["EasyDocs 📄✍🏼📓 is an integrated student-needs web-application. Although we intend to have a mobile app, you can try EasyDocs on a web browser on your phone and it works just as smoothly! We are committed to providing a simple and no-nonsense experience to students around the world.", "We at EasyDocs 📄✍🏼📓 bring you an integrated student-needs webapp equipped with URL and Document Summarization, Text-to-Audiobook Conversion as well as scanning and transcribing documents (OCR)! Our goal is to provide students a simple no-nonsense tool for their daily needs.", "Look, school and college are draining enough. Hence, we are committed to building EasyDocs 📄✍🏼📓 into a product that can ease the process of being a student rather than complexify it. Our aim is very simple: to have students not lose precious time over trivial tasks."],
+         	"context_set": ""
+        },
+        {
+			"tag": "summarization",
+         	"patterns": ["tell me about summarization", "how do you do summary", "how do summarization happen", "what is summarization", "tell me about text summarization", "tell about document summary", "tell me about url summarization", "how do you summarize url"],
+         	"responses": ["Text summarization is one of the biggest God-sends in any student's life. To not have to go through paragraphs and paragraphs, and pages and pages of information to find points of value and to rather just read a 10-line summary of the essentials is a dream we all have as students. Now with EasyDocs, it's a reality :) We use a Python library called sumy which in turn uses an algorithm called TextRank to provide an extractive summary of the text. If you provide us a URL, we parse through the HTML of the page to get the text. If you provide us a .txt file, the text is right there for us!", "The summarization algorithm we use is called TextRank; it is an extractive summarization technique. A library called sumy helps us to parse the webpage or document provided by you and run this algorithm on the provided text."],
+         	"context_set": ""
+	   },
+	   {
+			"tag": "audiobook",
+         	"patterns": ["what is audibook", "how do you convert text document to audiobook", "what is use of audiobook", "what is the method of conversion of text to audio", "can you convert pdf to audiobook?", "how long text document to audiobook"],
+         	"responses": ["Audiobooks are ", "Microsleep is a mild form of falling asleep wherein a sleep-deprived or fatigued person doze off for a few seconds at a time, without realizing that their eyes are closing. It is a huge source of fatigue-related crashes and has caused several crashes, including several plane crashes."],
+			 "context_set": ""
+		},
+		{
+			"tag": "solution",
+			"patterns": ["how to solve this", "how to reduce crash", "how to reduce crashes", "how does steersecure work", "how is it working", "how does it work", "what are you using"],
+			"responses": ["SteerSecure is committed to upholding driver safety. Both of our apps use the OpenCV computer vision library. The distraction detector is trained using the Tensorflow and Keras APIs on several images of distracted drivers and takes in a live video feed to detect any distracted activity. The live video is displayed to the driver along with a label of their activity, encouraging them to stay vigilant since their behavior is being tracked. Our drowsiness detector carefully evaluates the facial landmarks of the eyes as well as mouth and lips to detect any fatigue such as eyes shutting, microsleep or yawning. If it detects such activity, an alarm is sounded, encouraging the driver to pull over and get rested."],
+			"context_set": ""
+		},
+		{
+			"tag": "usage",
+			"patterns": ["how do i use steersecure", "how to use", "how to use this app", "i want to use steersecure", "how can i use this product"],
+			"responses": ["SteerSecure can be used by navigating to the sidebar on the left on our website and clicking on whichever application you want to try out.", "Head on over to our website and navigate to your application of choice!"],
+			"context_set": ""
+		},
+		{
+			"tag": "stats",
+			"patterns": ["what about accidents in india", "show me information about indian crash statistics", "give me accident information for india", "what are accidents like in india", "what are statistics for india", "india crashes", "statistics for accidents in india", "crashes in india", "accidents in india"],
+			"responses": ["There is no doubt about the fact that traffic accidents are a huge tragedy, not just for individuals but India as a whole. India averages approximately 4.5 lakh accidents each year, many of them fatal. Not only is it a needless and tragic loss of life, but it also ends up costing the economy more than 1 trillion rupees in property damage and overhead economic costs every year. Our aim is to try and rectify this in our small way.", "The statistics on traffic accidents in India are quite appalling. Over 400 people die tragically every day and more than 1500 are hospitalized with injuries. This is a tragic reality that we all need to try and set right. Not only is it a needless and tragic loss of life, but it also ends up costing the economy more than 1 trillion rupees in property damage and overhead economic costs every year. Our aim is to try and rectify this in our small way.", "Several studies and surveys done throughout India highlight the dire state of drivers. More than 70% admitted to talking on the phone, listening to music while more than 5% of all surveyed drivers confessed to watching videos while driving. Not only does all this cause a needless and tragic loss of life, but it also ends up costing the economy more than 1 trillion rupees in property damage and overhead economic costs every year. This is an unfortunate reality that we all live around everyday. Our aim is to try and rectify this in our small way.", "Overworked truck drivers in India often report being forced to drive for more than 20-25 hours without stopping. This leads to a huge amount of the overturning of trucks and lorries that we often see on the highways. Not only is it a needless and tragic loss of life, but it also ends up costing the economy more than 1 trillion rupees in property damage and overhead economic costs every year."],
+			"context_set": ""
+		}
+   ]
+}

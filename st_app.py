@@ -4,7 +4,11 @@ import streamlit as st
 from easydocs.summarization.summarize import summarize_url, summarize_doc
 
 # OCR Import
-
+import PIL
+from PIL import Image
+from google.cloud import vision_v1
+from google.cloud import vision
+from google.cloud.vision_v1 import types
 
 # Text to Audiobook Import
 
@@ -27,7 +31,7 @@ def generate_doc_summary(text, sentences_count):
 
 
 def ocr():
-	pass
+	
 
 def text_to_audio():
 	pass
@@ -82,6 +86,9 @@ def main():
 						st.markdown(summary)
 		
 	elif option ==  'Optical Character Recognition':
+		image = st.file_uploader("Upload an image:")
+
+		
 		ocr()
 	elif option == 'Convert text-to-audiobook':
 		text_to_audio()
