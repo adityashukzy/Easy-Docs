@@ -25,11 +25,11 @@ def ocr(bytes_image):
 	st.text(transcript)
 
 ## Text to Audiobook
-def text_to_audio(text_input, save, slow):
-	convert_text_to_audio(text_input, save, slow)
+def text_to_audio(text_input, slow):
+	convert_text_to_audio(text_input, slow)
 
-def pdf_to_audio(pdf, save, slow):
-	convert_pdf_to_audio(pdf, save, slow)
+def pdf_to_audio(pdf, slow):
+	convert_pdf_to_audio(pdf, slow)
 
 ## EzPz Chatbot
 def ezpz():
@@ -49,7 +49,7 @@ def main():
 		st.title("EasyDocs 📄✍🏼📓 ~ A student friendly ML application")
 
 		st.subheader("EasyDocs is a web-app with the sole purpose of making your life as a student easier!")
-		
+
 		st.write("*Summarize* long text documents or paragraphs with the click of a button!")
 		st.write("Identify, *recognize* and store text obtained from handwritten images or documents!")
 		st.write("Explore the extremely convenient method of learning: via *audiobooks*!")
@@ -99,18 +99,18 @@ def main():
 		st.title('Hello there!')
 		st.subheader('A simple text-to-speech converter.')
 		text_input = st.text_area('Enter text: ')
-		
-		save = st.radio('Do you want to save the output file?', ("Yes", "No"))
+
+		#save = st.radio('Do you want to save the output file?', ("Yes", "No"))
 		slow = st.radio("Do you want it read slowly?", ("Yes", "No"))
 
-		text_to_audio(text_input, save, slow)
+		text_to_audio(text_input, slow)
 
 	elif option == "PDF-to-audiobook":
 		pdf_file = st.file_uploader("Upload PDF: ", type=['pdf'])
-		save = st.radio('Do you want to save the output file?', ("Yes", "No"))
+		#save = st.radio('Do you want to save the output file?', ("Yes", "No"))
 		slow = st.radio("Do you want it read slowly?", ("Yes", "No"))
 
-		pdf_to_audio(pdf_file, save, slow)
+		pdf_to_audio(pdf_file, slow)
 
 	elif option == 'Talk to EzPz':
 		ezpz()
