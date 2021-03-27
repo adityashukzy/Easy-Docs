@@ -138,7 +138,7 @@ def main():
 		textInput = st.text_input("You: ", value = "Ask EzPz something about EasyDocs! When you're done, just type exit to leave!")
 
 		resp=ezpz(textInput)
-		st.write(resp)
+		st.text_area('EzPz: ',value=resp,height=200)
 
 if __name__ == "__main__":
 	main()
