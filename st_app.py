@@ -25,7 +25,7 @@ def ocr(img):
 	transcript = transcribe_image(img)
 	st.write('Transcribed text: ')
 	st.text(transcript)
-
+	
 ## Text to Audiobook
 def text_to_audio(text_input, slow):
 	audio = convert_text_to_audio(text_input, slow)
