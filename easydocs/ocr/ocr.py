@@ -8,4 +8,4 @@ def transcribe_image(image_array):
 	return "\n".join(result)
 
 if __name__ == "__main__":
-	transcribe_image()
+	transcribe_image(r'dependencies/lstm_cell.jpg')
