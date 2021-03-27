@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 
 from easydocs.summary.summarization import summarize_url, summarize_doc
-from easydocs.ocr.ocr import transcribe_image
+# from easydocs.ocr.ocr import transcribe_image
 from easydocs.audio.audiobook import convert_text_to_audio, convert_pdf_to_audio
 from easydocs.ezpz.response import load_chatbot, ezpz_bot
 
@@ -64,12 +64,12 @@ def main():
 		img_path = "dependencies/black-bg-logo.gif"
 
 		st.image(img_path,width = 500)
-		st.subheader("EasyDocs is a web-app with the sole purpose of making your life as a student easier!")
+		st.subheader("EasyDocs is a one-stop solution combining all your most needed tools as a student. We understand the value and preciousness of time and that is why we have aimed to make EasyDocs as no-nonsense as possible!")
 
-		st.write("*Summarize* long text documents or paragraphs with the click of a button!")
-		st.write("Identify, *recognize* and store text obtained from handwritten images or documents!")
-		st.write("Explore the extremely convenient method of learning: via *audiobooks*!")
-		st.write("Finally, in case you need any help, visit the *Chatbot* section of our application to learn more about EasyDocs.")
+		st.write("-- Summarize webpages and long text documents.")
+		st.write("-- Scan images for text and have them transcribed. This is called Optical Character Recognition or OCR!")
+		st.write("-- Play around with and explore the extremely convenient method of learning: *audiobooks*!")
+		st.write("If you're just looking around, maybe visit the EzPz our chatbot and learn more about EasyDocs!")
 
 	elif option == 'Summarize URL':
 		## URL summarization

@@ -17,8 +17,9 @@ def convert_pdf_to_audio(pdf_file, slow):
 
 	try:
 		with pdfplumber.open(pdf_file) as pdf:
-			page = pdf.pages[0]
-			pdf_text += page.extract_text()
+			pages = pdf.pages
+			for val in pages:
+				pdf_text += val.extract_text()
 
 		print(pdf_text)
 
