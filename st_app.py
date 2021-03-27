@@ -28,7 +28,7 @@ def ocr(image_array):
 	transcript = transcribe_image(image_array)
 	st.write('Transcribed text: ')
 	st.text(transcript)
-	
+
 ## Text to Audiobook
 def text_to_audio(text_input, slow):
 	audio = convert_text_to_audio(text_input, slow)
@@ -137,7 +137,8 @@ def main():
 		st.title("EzPz ~ The Chatbot")
 		textInput = st.text_input("You: ", value = "Ask EzPz something about EasyDocs! When you're done, just type exit to leave!")
 
-		ezpz(textInput)
+		resp=ezpz(textInput)
+		st.write(resp)
 
 if __name__ == "__main__":
 	main()
