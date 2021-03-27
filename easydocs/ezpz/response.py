@@ -17,12 +17,12 @@ def input_bag(sen, words):
 	lemm = WordNetLemmatizer()
 
 	bag = [0] * len(words)
-	words = nltk.word_tokenize(sen)
+	wrds = nltk.word_tokenize(sen)
 
-	words = [lemm.lemmatize(w.lower()) for w in words]
+	wrds = [lemm.lemmatize(w.lower()) for w in words]
 
-	for s in words:
-		for i, j in enumerate(words):
+	for s in wrds:
+		for i, j in enumerate(wrds):
 			if j == s:
 				bag[i] = 1
 
