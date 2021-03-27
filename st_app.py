@@ -49,7 +49,7 @@ def pdf_to_audio(pdf, slow):
 def ezpz(textInput):
 	model = load_chatbot('dependencies/ezpz_model.h5')
 	response = ezpz_bot(model, textInput)
-
+	return response
 
 # MAIN Function
 def main():
