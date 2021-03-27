@@ -47,7 +47,7 @@ def pdf_to_audio(pdf, slow):
 
 ## EzPz Chatbot
 def ezpz(textInput):
-	model=load_chatbot('dependencies\ezpz_model.h5')
+	model = load_chatbot('dependencies/ezpz_model.h5')
 	response = ezpz_bot(model, textInput)
 
 
@@ -135,7 +135,7 @@ def main():
 
 	elif option == 'Talk to EzPz':
 		st.title("EzPz ~ The Chatbot")
-		textInput = st.text_input("You: ", value = "Ask Nav something! When you're done, just type exit to leave!")
+		textInput = st.text_input("You: ", value = "Ask EzPz something about EasyDocs! When you're done, just type exit to leave!")
 
 		ezpz(textInput)
 

@@ -2,6 +2,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 import nltk
+import json
 from nltk.stem import WordNetLemmatizer
 import random
 import pickle
@@ -15,11 +16,11 @@ def input_bag(sen, words):
 	lemm = WordNetLemmatizer()
 
 	bag = [0] * len(words)
-	wrds = nltk.word_tokenize(sen)
+	words = nltk.word_tokenize(sen)
 
-	wrds = [lemm.lemmatize(w.lower()) for w in wrds]
+	words = [lemm.lemmatize(w.lower()) for w in words]
 
-	for s in wrds:
+	for s in words:
 		for i, j in enumerate(words):
 			if j == s:
 				bag[i] = 1
@@ -28,7 +29,7 @@ def input_bag(sen, words):
 
 def ezpz_bot(model, textInput):
 	with open('dependencies/ezpz_intents.json') as file:
-		data = json.load(file,strict=False)
+		data = json.load(file, strict=False)
 
 	words = pickle.load(open('dependencies/words_ed.pkl','rb'))
 	labels = pickle.load(open('file dependencies/labels_ed.pkl','rb'))
