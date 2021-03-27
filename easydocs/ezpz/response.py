@@ -13,20 +13,16 @@ def load_chatbot(path):
 	model = keras.models.load_model(path)
 	return model
 
-def input_bag(sen, words):
-	lemm = WordNetLemmatizer()
+def input_bag(sen,words):
+    bag=[0]*len(words)
+    wrds=nltk.word_tokenize(sen)
+    wrds=[lemm.lemmatize(w.lower()) for w in wrds]
 
-	bag = [0] * len(words)
-	wrds = nltk.word_tokenize(sen)
-
-	wrds = [lemm.lemmatize(w.lower()) for w in wrds]
-
-	for s in wrds:
-		for i, j in enumerate(wrds):
-			if j == s:
-				bag[i] = 1
-
-	return np.array(bag)
+    for s in wrds:
+        for i,j in enumerate(words):
+            if j==s:
+                bag[i]=1
+    return (np.array(bag))
 
 def ezpz_bot(model, textInput):
 	with open('dependencies/ezpz_intents.json') as file:
@@ -44,6 +40,7 @@ def ezpz_bot(model, textInput):
 		pred_index = np.argmax(result)
 
 		tag = labels[pred_index]
+		st.write(tag)
 
 		for val in data['intents']:
 			if val['tag'] == tag:
