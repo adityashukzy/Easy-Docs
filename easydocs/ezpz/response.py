@@ -40,11 +40,11 @@ def ezpz_bot(model, textInput):
 		pred_index = np.argmax(result)
 
 		tag = labels[pred_index]
-		st.write(tag)
+		#st.write(tag)
 
 		for val in data['intents']:
 			if val['tag'] == tag:
 				resp = val['responses']
 				break
 
-		return random.choice(resp)
+		return (random.choice(resp),tag)
