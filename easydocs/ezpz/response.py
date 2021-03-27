@@ -33,7 +33,7 @@ def ezpz_bot(model, textInput):
 		data = json.load(file, strict=False)
 
 	words = pickle.load(open('dependencies/words_ed.pkl','rb'))
-	labels = pickle.load(open('file dependencies/labels_ed.pkl','rb'))
+	labels = pickle.load(open('dependencies/labels_ed.pkl','rb'))
 
 	while True:
 		if textInput.lower() == 'exit':
