@@ -2,6 +2,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 import nltk
+nltk.download('wordnet')
 import json
 from nltk.stem import WordNetLemmatizer
 import random
