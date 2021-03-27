@@ -8,6 +8,7 @@ from nltk.stem import WordNetLemmatizer
 import random
 import pickle
 
+lemm=WordNetLemmatizer()
 
 def load_chatbot(path):
 	model = keras.models.load_model(path)
@@ -47,4 +48,4 @@ def ezpz_bot(model, textInput):
 				resp = val['responses']
 				break
 
-		return (random.choice(resp),tag)
+		return random.choice(resp)

@@ -137,8 +137,8 @@ def main():
 		st.title("EzPz ~ The Chatbot")
 		textInput = st.text_input("You: ", value = "Ask EzPz something about EasyDocs! When you're done, just type exit to leave!")
 
-		resp,tg=ezpz(textInput)
-		st.write(tg)
+		resp=ezpz(textInput)
+		#st.write(tg)
 		st.text_area('EzPz: ',value=resp,height=200)
 
 if __name__ == "__main__":
