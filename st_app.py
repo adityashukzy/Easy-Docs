@@ -53,7 +53,7 @@ def ezpz(textInput):
 
 # MAIN Function
 def main():
-	menu = ['Welcome', 'Summarize a URL', 'Summarize a text document', 'Optical Character Recognition', 'Text-to-audiobook', 'PDF-to-audiobook', 'Talk to the EzPz bot']
+	menu = ['Welcome', 'Summarize a URL', 'Summarize a text document', 'Optical Character Recognition', 'Text-to-audiobook', 'PDF-to-audiobook', 'Talk to EzPz']
 	with st.sidebar.beta_expander("Menu", expanded=False):
 		option = st.selectbox('Choose your task', menu)
 		st.subheader("Made with ❤️ by Team Agnes")
