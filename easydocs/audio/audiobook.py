@@ -9,7 +9,7 @@ def convert_text_to_audio(text_input, save, slow):
 		elif slow == "No":
 			audio = gTTS(text=text_input, lang='en', slow=False)
 		
-		audio.save('your_audiobook.mp3')
+		audio.save('your_audiobook.wav')
 
 	elif save == "No":
 		speaker = pyttsx3.init()
@@ -32,7 +32,7 @@ def convert_pdf_to_audio(pdf_file, save, slow):
 			audio = gTTS(text=pdf_text, lang='en', slow=False)
 		
 		if save == "Yes":
-			audio.save('your_audiobook.mp3')
+			audio.save('your_audiobook.wav')
 		elif save == "No":
 			speaker = pyttsx3.init()
 			speaker.say(pdf_text)
