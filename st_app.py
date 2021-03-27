@@ -25,11 +25,11 @@ def ocr(bytes_image):
 	st.text(transcript)
 
 ## Text to Audiobook
-def text_to_audio(text_input, save, slow):
-	convert_text_to_audio(text_input, save, slow)
+def text_to_audio(text_input, slow):
+	convert_text_to_audio(text_input, slow)
 
-def pdf_to_audio(pdf, save, slow):
-	convert_pdf_to_audio(pdf, save, slow)
+def pdf_to_audio(pdf, slow):
+	convert_pdf_to_audio(pdf, slow)
 
 ## EzPz Chatbot
 def ezpz():

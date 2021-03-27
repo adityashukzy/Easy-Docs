@@ -2,21 +2,19 @@ from gtts import gTTS
 import pyttsx3
 import pdfplumber
 
-def convert_text_to_audio(text_input, save, slow):
-	if save == "Yes":
-		if slow == "Yes":
-			audio = gTTS(text=text_input, lang='en', slow=True)
-		elif slow == "No":
-			audio = gTTS(text=text_input, lang='en', slow=False)
-		
-		audio.save('your_audiobook.wav')
+def convert_text_to_audio(text_input, slow):
+	if slow == "Yes":
+		audio = gTTS(text=text_input, lang='en', slow=True)
+	elif slow == "No":
+		audio = gTTS(text=text_input, lang='en', slow=False)
 
-	elif save == "No":
-		speaker = pyttsx3.init()
-		speaker.say(text_input)
-		speaker.runAndWait()
+	audio.save('your_audiobook.wav')
+	with open('your_audiobook.wav','rb') as aud:
+		f1 = aud.read()
+	
+	# st.audio(f1,format='audio/wav')
 
-def convert_pdf_to_audio(pdf_file, save, slow):
+def convert_pdf_to_audio(pdf_file, slow):
 	pdf_text = ''
 
 	try:
@@ -25,19 +23,13 @@ def convert_pdf_to_audio(pdf_file, save, slow):
 			pdf_text += page.extract_text()
 
 		print(pdf_text)
-		
+
 		if slow == "Yes":
 			audio = gTTS(text=pdf_text, lang='en', slow=True)
 		elif slow == "No":
 			audio = gTTS(text=pdf_text, lang='en', slow=False)
 		
-		if save == "Yes":
-			audio.save('your_audiobook.wav')
-		elif save == "No":
-			speaker = pyttsx3.init()
-			speaker.say(pdf_text)
-			speaker.runAndWait()
-
+		audio.save('your_audiobook.wav')
 	except:
 		return "Not in a readable format."
 
