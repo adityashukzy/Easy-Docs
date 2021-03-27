@@ -4,7 +4,7 @@ import os
 from easydocs.summary.summarization import summarize_url, summarize_doc
 from easydocs.ocr.ocr import transcribe_image
 from easydocs.audio.audiobook import convert_text_to_audio, convert_pdf_to_audio
-from easydocs.ezpz.response import load_chatbot,ezpz_bot
+from easydocs.ezpz.response import load_chatbot, ezpz_bot
 
 ## Summarization Functions
 def generate_url_summary(url, sentences_count):
