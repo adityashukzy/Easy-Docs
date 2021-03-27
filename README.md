@@ -30,6 +30,13 @@ Choose from 6 unique components:
 EasyDocs has been deployed for commercial usage via Streamlit sharing and the working web application can be found here:
 https://share.streamlit.io/adityashukzy/easy-docs/main/st_app.py
 
+## Challenges Faced
+- Facing issues with how accurately content/text is captured by OCR and pdf file parser. This leads to certain erroneous words getting included in the text output and audiobook respectively.
+
+- Loading an audio file for a larger PDF document takes quite a while as the number of minutes increases rapidly depending on the number of pages present in the PDF document.
+
+- Getting a meticulous summary of the uploaded document/URL isn't plausible as the type of summary generation used in EasyDocs is the extractive kind which gives importance to the most relevant sentences present unlike the abstractive summary which generates the same from scratch and without any reference to the pre-existing document or URL.
+
 ## Contributors
 
 
@@ -77,5 +84,5 @@ This project is licensed under the MIT License - see the [License](LICENSE) file
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 <p align="center">
-	Made with ❤️ by Team Armada
+	Made with ❤️ by Team Agnes
 </p>
