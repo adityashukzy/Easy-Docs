@@ -4,6 +4,7 @@ import os
 from easydocs.summary.summarization import summarize_url, summarize_doc
 from easydocs.ocr.ocr import transcribe_image
 from easydocs.audio.audiobook import convert_text_to_audio, convert_pdf_to_audio
+from easydocs.ezpz.response import load_chatbot,ezpz_bot
 
 ## Summarization Functions
 def generate_url_summary(url, sentences_count):
@@ -29,7 +30,7 @@ def ocr(img):
 ## Text to Audiobook
 def text_to_audio(text_input, slow):
 	audio = convert_text_to_audio(text_input, slow)
-	
+
 	audio.save('audiobook.wav')
 	st.audio('audiobook.wav', format='audio/wav')
 	os.remove('audiobook.wav')
@@ -38,13 +39,15 @@ def pdf_to_audio(pdf, slow):
 	with st.spinner("Converting PDF to audio... "):
 		audio = convert_pdf_to_audio(pdf, slow)
 		audio.save('audiobook.wav')
-	
+
 	st.audio('audiobook.wav', format='audio/wav')
 	os.remove('audiobook.wav')
 
 ## EzPz Chatbot
-def ezpz():
-	pass
+def ezpz(textInput):
+	model=load_chatbot('dependencies\ezpz_model.h5')
+	response = ezpz_bot(model, textInput)
+
 
 # MAIN Function
 def main():
@@ -60,7 +63,7 @@ def main():
 		st.title("EasyDocs 📄✍🏼📓 ~ A student friendly ML application")
 
 		st.subheader("EasyDocs is a web-app with the sole purpose of making your life as a student easier!")
-		
+
 		st.write("*Summarize* long text documents or paragraphs with the click of a button!")
 		st.write("Identify, *recognize* and store text obtained from handwritten images or documents!")
 		st.write("Explore the extremely convenient method of learning: via *audiobooks*!")
@@ -109,7 +112,7 @@ def main():
 		st.title('Hello there!')
 		st.subheader('A simple text-to-speech converter.')
 		text_input = st.text_area('Enter text: ')
-		
+
 		# save = st.radio('Do you want to save the output file?', ("Yes", "No"))
 		slow = st.radio("Do you want it read slowly?", ("Yes", "No"))
 
@@ -127,7 +130,10 @@ def main():
 			pdf_to_audio(pdf_file, slow)
 
 	elif option == 'Talk to EzPz':
-		ezpz()
+		st.title("EzPz ~ The Chatbot")
+		textInput = st.text_input("You: ", value = "Ask Nav something! When you're done, just type exit to leave!")
+
+		ezpz(textInput)
 
 if __name__ == "__main__":
 	main()
