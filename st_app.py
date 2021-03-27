@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 
 from easydocs.summary.summarization import summarize_url, summarize_doc
-# from easydocs.ocr.ocr import transcribe_image
+from easydocs.ocr.ocr import transcribe_image
 from easydocs.audio.audiobook import convert_text_to_audio, convert_pdf_to_audio
 from easydocs.ezpz.response import load_chatbot, ezpz_bot
 
@@ -60,7 +60,7 @@ def main():
 		st.subheader("Made with ❤️ by Team Agnes")
 
 	if option == 'Welcome':
-		img_path = "dependencies/cropped_logo.gif"
+		img_path = "dependencies/black-bg-logo.gif"
 
 		st.image(img_path,width = 500)
 		st.subheader("EasyDocs is a web-app with the sole purpose of making your life as a student easier!")
@@ -128,7 +128,7 @@ def main():
 			text_to_audio(text_input, slow)
 
 	elif option == 'Convert PDF to audiobook':
-		st.title("Convert a PDF to an audiobook")
+		st.title("Convert a PDF to an audiobook 📙")
 		st.write("This one goes out to all the audiobook lovers!")
 		pdf_file = st.file_uploader("Upload PDF: ", type=['pdf'])
 
@@ -138,7 +138,7 @@ def main():
 			pdf_to_audio(pdf_file, slow)
 
 	elif option == 'Talk to EzPz!':
-		st.title("EzPz ~ The Chatbot")
+		st.title("EzPz 🤗")
 		textInput = st.text_input("You: ", value = "Ask EzPz something about EasyDocs! When you're done, just type exit to leave!")
 
 		if textInput is not "Ask EzPz something about EasyDocs! When you're done, just type exit to leave!":
