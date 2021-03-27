@@ -36,8 +36,8 @@ def text_to_audio(text_input, slow):
 def pdf_to_audio(pdf, slow):
 	with st.spinner("Converting PDF to audio... "):
 		audio = convert_pdf_to_audio(pdf, slow)
-
-	audio.save('audiobook.wav')
+		audio.save('audiobook.wav')
+	
 	st.audio('audiobook.wav', format='audio/wav')
 	os.remove('audiobook.wav')
 
@@ -113,15 +113,18 @@ def main():
 		# save = st.radio('Do you want to save the output file?', ("Yes", "No"))
 		slow = st.radio("Do you want it read slowly?", ("Yes", "No"))
 
-		if text_input is not None:
+		if len(text_input) > 0:
 			text_to_audio(text_input, slow)
 
 	elif option == "PDF-to-audiobook":
+		st.title("Convert a PDF to an audiobook")
+		st.subheader("Once the file is ready, you can play it here or right-click and download!")
 		pdf_file = st.file_uploader("Upload PDF: ", type=['pdf'])
 		# save = st.radio('Do you want to save the output file?', ("Yes", "No"))
 		slow = st.radio("Do you want it read slowly?", ("Yes", "No"))
 
-		pdf_to_audio(pdf_file, slow)
+		if pdf_file is not None:
+			pdf_to_audio(pdf_file, slow)
 
 	elif option == 'Talk to EzPz':
 		ezpz()
