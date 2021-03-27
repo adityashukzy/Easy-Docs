@@ -1,5 +1,7 @@
 import streamlit as st
 import os
+from PIL import Image
+import numpy as np
 
 from easydocs.summary.summarization import summarize_url, summarize_doc
 from easydocs.ocr.ocr import transcribe_image
@@ -22,8 +24,8 @@ def generate_doc_summary(text, sentences_count):
 	return summary
 
 ## Optical Character Recognition
-def ocr(img):
-	transcript = transcribe_image(img)
+def ocr(image_array):
+	transcript = transcribe_image(image_array)
 	st.write('Transcribed text: ')
 	st.text(transcript)
 	
@@ -103,10 +105,12 @@ def main():
 
 	elif option ==  'Optical Character Recognition':
 		st.title("Transcribe text from an image")
-		img_file = st.file_uploader("Upload an image:",type=['jpg','png'])
+		img_file_buffer = st.file_uploader("Upload an image:",type=['jpg','png'])
 
-		if img_file is not None:
-			ocr(img_file)
+		if img_file_buffer is not None:
+			image = Image.open(img_file_buffer)
+			image_array = np.array(image)
+			ocr(image_array)
 
 	elif option == 'Text-to-audiobook':
 		st.title('Hello there!')
