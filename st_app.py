@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 from easydocs.summary.summarization import summarize_url, summarize_doc
 from easydocs.ocr.ocr import transcribe_image
@@ -26,7 +27,12 @@ def ocr(bytes_image):
 
 ## Text to Audiobook
 def text_to_audio(text_input, slow):
-	convert_text_to_audio(text_input, slow)
+	audio = convert_text_to_audio(text_input, slow)
+	
+	# audio.seek(0)
+	audio.save('audiobook.wav')
+	st.audio('audiobook.wav', format='audio/wav')
+	os.remove('audiobook.wav')
 
 def pdf_to_audio(pdf, slow):
 	convert_pdf_to_audio(pdf, slow)
@@ -100,17 +106,18 @@ def main():
 		st.subheader('A simple text-to-speech converter.')
 		text_input = st.text_area('Enter text: ')
 		
-		save = st.radio('Do you want to save the output file?', ("Yes", "No"))
+		# save = st.radio('Do you want to save the output file?', ("Yes", "No"))
 		slow = st.radio("Do you want it read slowly?", ("Yes", "No"))
 
-		text_to_audio(text_input, save, slow)
+		if text_input is not None:
+			text_to_audio(text_input, slow)
 
 	elif option == "PDF-to-audiobook":
 		pdf_file = st.file_uploader("Upload PDF: ", type=['pdf'])
-		save = st.radio('Do you want to save the output file?', ("Yes", "No"))
+		# save = st.radio('Do you want to save the output file?', ("Yes", "No"))
 		slow = st.radio("Do you want it read slowly?", ("Yes", "No"))
 
-		pdf_to_audio(pdf_file, save, slow)
+		pdf_to_audio(pdf_file, slow)
 
 	elif option == 'Talk to EzPz':
 		ezpz()
