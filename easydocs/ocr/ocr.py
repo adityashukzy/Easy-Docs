@@ -2,7 +2,7 @@ from PIL import Image
 import easyocr
 
 def transcribe_image(image):
-	image = Image(image)
+	image = Image.open(image)
 	reader = easyocr.Reader(['en'])
 	result = reader.readtext(image, detail=0)
 
