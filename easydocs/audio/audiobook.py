@@ -10,13 +10,6 @@ def convert_text_to_audio(text_input, slow):
 	elif slow == "No":
 		audio = gTTS(text=text_input, lang='en', slow=False)
 
-	# audio.save('your_audiobook.wav')
-	# with open('your_audiobook.wav','rb') as aud:
-	# 	f1 = aud.read()
-	
-	# st.audio(f1,format='audio/wav')
-	mp3_fp = BytesIO()
-
 	return audio
 
 def convert_pdf_to_audio(pdf_file, slow):
@@ -34,7 +27,7 @@ def convert_pdf_to_audio(pdf_file, slow):
 		elif slow == "No":
 			audio = gTTS(text=pdf_text, lang='en', slow=False)
 		
-		audio.save('your_audiobook.wav')
+		return audio
 	except:
 		return "Not in a readable format."
 

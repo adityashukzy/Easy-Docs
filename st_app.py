@@ -29,13 +29,17 @@ def ocr(bytes_image):
 def text_to_audio(text_input, slow):
 	audio = convert_text_to_audio(text_input, slow)
 	
-	# audio.seek(0)
 	audio.save('audiobook.wav')
 	st.audio('audiobook.wav', format='audio/wav')
 	os.remove('audiobook.wav')
 
 def pdf_to_audio(pdf, slow):
-	convert_pdf_to_audio(pdf, slow)
+	with st.spinner("Converting PDF to audio... "):
+		audio = convert_pdf_to_audio(pdf, slow)
+
+	audio.save('audiobook.wav')
+	st.audio('audiobook.wav', format='audio/wav')
+	os.remove('audiobook.wav')
 
 ## EzPz Chatbot
 def ezpz():
