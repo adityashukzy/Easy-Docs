@@ -1,28 +1,27 @@
-from google.cloud import vision_v1
-from google.cloud import vision
-from google.cloud.vision_v1 import types
-import os
-import io
-os.environ['GOOGLE_APPLICATION_CREDENTIALS']=r'dependencies/TokenKeyGCP.json'
+from PIL import Image
+import pytesseract
 
-def transcribe_image(bytes_image):
-	client = vision.ImageAnnotatorClient()
+pytesseract.pytesseract.tesseract_cmd=r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+def ocr_core(image):
+	text = pytesseract.image_to_string(image)
+	return text
 
-	content = bytes_image
-	image = vision_v1.types.Image(content=content)
+#img = cv2.imread('stuff\pic1.jpg')
 
-	response = client.text_detection(image=image)
-	text = response.text_annotations
-	
-	textList = []
-	for i in text:
-		textList.append(i.description)
-	
-	transcript = "\n".join(textList)
+def get_grayscale(img):
+	return cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-	return transcript
+def remove_noise(img):
+	return cv2.medianBlur(img, 5)
 
-if __name__ == "__main__":
-	with io.open("/Users/adityashukla/Documents/GitHub/Easy-Docs/dependencies/logo1.jpg",'rb') as fl:
-		content = fl.read()
-		transcribeImage(content)
+def thresholding(img):
+	return cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+
+def transcribe_image(img):
+	img = Image.open(img)
+
+	#img = get_grayscale(img)
+	#img = thresholding(img)
+	#img = remove_noise(img)
+
+	return (ocr_core(img))

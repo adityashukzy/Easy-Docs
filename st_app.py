@@ -21,8 +21,9 @@ def generate_doc_summary(text, sentences_count):
 	return summary
 
 ## Optical Character Recognition
-def ocr(bytes_image):
-	transcript = transcribe_image(bytes_image)
+def ocr(img):
+	transcript = transcribe_image(img)
+	st.write('Transcribed text: ')
 	st.text(transcript)
 
 ## Text to Audiobook
@@ -99,11 +100,10 @@ def main():
 
 	elif option ==  'Optical Character Recognition':
 		st.title("Transcribe text from an image")
-		img_file_buffer = st.file_uploader("Upload an image:")
+		img_file = st.file_uploader("Upload an image:",type=['jpg','png'])
 
-		if img_file_buffer is not None:
-			bytes_image = img_file_buffer.getvalue()
-			ocr(bytes_image)
+		if img_file is not None:
+			ocr(img_file)
 
 	elif option == 'Text-to-audiobook':
 		st.title('Hello there!')
