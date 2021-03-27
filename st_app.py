@@ -26,8 +26,9 @@ def generate_doc_summary(text, sentences_count):
 ## Optical Character Recognition
 def ocr(image_array):
 	transcript = transcribe_image(image_array)
-	st.write('Transcribed text: ')
-	st.text(transcript)
+
+	st.subheader('Transcribed text: ')
+	st.write(transcript)
 
 ## Text to Audiobook
 def text_to_audio(text_input, slow):
@@ -115,6 +116,8 @@ def main():
 		if img_file_buffer is not None:
 			image = Image.open(img_file_buffer)
 			image_array = np.array(image)
+
+			st.image(image, "Uploaded Image")
 			ocr(image_array)
 
 	elif option ==  'Read Text Out Loud':
